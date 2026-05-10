@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CheckSquare, Eye, EyeOff } from 'lucide-react';
+import { CheckSquare, Eye, EyeOff, User } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth.js';
 import Button from '../../components/common/Button.jsx';
 import Input from '../../components/common/Input.jsx';
@@ -52,15 +52,20 @@ export default function LoginPage() {
           </motion.h2>
           <p className="text-white/60 text-lg">500+ teams already trust TaskFlow to ship on time.</p>
           <div className="flex -space-x-2 mt-6">
-            {['Alice','Bob','Carol','Dan','Eve'].map(name => (
+            {[1, 2, 3].map((num) => (
               <img
-                key={name}
-                src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${name}&backgroundColor=b6e3f4`}
-                className="w-9 h-9 rounded-full ring-2 ring-white bg-white"
-                alt={name}
+                key={num}
+                src={`/avatars/avatar_${num}.png`}
+                className="w-9 h-9 rounded-full ring-2 ring-white bg-white object-cover"
+                alt={`User ${num}`}
               />
             ))}
-            <div className="w-9 h-9 rounded-full ring-2 ring-white bg-accent flex items-center justify-center text-xs font-bold">
+            {[4, 5].map((num) => (
+              <div key={num} className="w-9 h-9 rounded-full ring-2 ring-white bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                <User size={16} className="text-white/60" />
+              </div>
+            ))}
+            <div className="w-9 h-9 rounded-full ring-2 ring-white bg-accent flex items-center justify-center text-xs font-bold shadow-lg">
               +99
             </div>
           </div>

@@ -11,6 +11,7 @@ import ProjectDetailPage from './pages/projects/ProjectDetailPage.jsx';
 import MembersPage from './pages/members/MembersPage.jsx';
 import ProfilePage from './pages/profile/ProfilePage.jsx';
 import ProtectedRoute from './components/layout/ProtectedRoute.jsx';
+import PWAInstallPrompt from './components/layout/PWAInstallPrompt.jsx';
 
 export default function App() {
   const { user, loading } = useAuth();
@@ -24,7 +25,9 @@ export default function App() {
   }
 
   return (
-    <AnimatePresence mode="wait">
+    <>
+      <PWAInstallPrompt />
+      <AnimatePresence mode="wait">
       <Routes>
         {/* Public routes */}
         <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <LandingPage />} />
@@ -44,5 +47,6 @@ export default function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AnimatePresence>
+    </>
   );
 }
