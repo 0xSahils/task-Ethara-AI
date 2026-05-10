@@ -5,6 +5,7 @@ const variants = {
   danger:  'bg-danger text-white hover:bg-opacity-90',
   ghost:   'bg-transparent text-accent border border-accent hover:bg-accent hover:text-white',
   outline: 'bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-50',
+  light:   'bg-white text-indigo-950 hover:bg-gray-50',
 };
 
 const sizes = {
