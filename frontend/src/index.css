@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ──────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    @apply font-sans antialiased bg-surface text-gray-900;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-gray-300 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-gray-400; }
+}
+
+/* ─── Animated gradient background (landing page) ───────────────── */
+.animated-gradient {
+  background: linear-gradient(-45deg, #1A1A2E, #0F3460, #16213E, #0D0D1A);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* ─── Glass card ─────────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ─── Skeleton pulse ─────────────────────────────────────────────── */
+.skeleton {
+  @apply bg-gray-200 rounded animate-pulse;
+}
+
+/* ─── Kanban column scroll ───────────────────────────────────────── */
+.kanban-col {
+  min-height: 200px;
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+}
+
+/* ─── Input float label ──────────────────────────────────────────── */
+.float-label-input:focus ~ label,
+.float-label-input:not(:placeholder-shown) ~ label {
+  @apply text-xs -translate-y-6 text-accent;
+}
+
+/* ─── Priority badge colors ──────────────────────────────────────── */
+.priority-low      { @apply bg-blue-100 text-blue-700; }
+.priority-medium   { @apply bg-yellow-100 text-yellow-700; }
+.priority-high     { @apply bg-orange-100 text-orange-700; }
+.priority-critical { @apply bg-red-100 text-red-700; }
+
+/* ─── Status chip colors ─────────────────────────────────────────── */
+.status-todo        { @apply bg-gray-100 text-gray-600; }
+.status-in_progress { @apply bg-blue-100 text-blue-700; }
+.status-on_hold     { @apply bg-yellow-100 text-yellow-700; }
+.status-done        { @apply bg-green-100 text-green-700; }
+
+/* ─── Page transition wrapper ────────────────────────────────────── */
+.page-wrapper {
+  @apply min-h-screen;
+}
+
+/* ─── Dark mode global overrides ────────────────────────────────────── */
+.dark body                { background-color: #0D0D1A; color: #F9FAFB; }
+.dark .bg-surface         { background-color: #0D0D1A !important; }
+.dark .bg-white           { background-color: #1A1A2E !important; color: #F9FAFB; }
+.dark .bg-gray-50         { background-color: #16213E !important; }
+.dark .bg-gray-100        { background-color: #1e2a40 !important; }
+.dark .text-gray-900      { color: #F9FAFB !important; }
+.dark .text-gray-700      { color: #D1D5DB !important; }
+.dark .text-gray-600      { color: #9CA3AF !important; }
+.dark .text-gray-500      { color: #9CA3AF !important; }
+.dark .text-gray-400      { color: #6B7280 !important; }
+.dark .border-gray-100    { border-color: rgba(255,255,255,0.08) !important; }
+.dark .border-gray-200    { border-color: rgba(255,255,255,0.1) !important; }
+.dark .border-gray-50     { border-color: rgba(255,255,255,0.06) !important; }
+.dark .divide-gray-50 > * + * { border-color: rgba(255,255,255,0.06) !important; }
+.dark .shadow-card        { box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important; }
+.dark input, .dark textarea, .dark select {
+  background-color: #16213E !important;
+  border-color: rgba(255,255,255,0.12) !important;
+  color: #F9FAFB !important;
+}
+.dark input::placeholder, .dark textarea::placeholder { color: #4B5563; }
+.dark .hover\:bg-gray-50:hover  { background-color: rgba(255,255,255,0.05) !important; }
+.dark .hover\:bg-gray-100:hover { background-color: rgba(255,255,255,0.08) !important; }
+.dark .skeleton { background-color: #1e2a40 !important; }
+
