@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CheckSquare, Users, BarChart3, ArrowRight, Github } from 'lucide-react';
+import { CheckSquare, Users, BarChart3, ArrowRight, Github, Download, Laptop, Smartphone } from 'lucide-react';
 import Button from '../components/common/Button.jsx';
 
 const features = [
@@ -143,6 +143,49 @@ export default function LandingPage() {
               <p className="text-white/60 text-sm leading-relaxed">{desc}</p>
             </motion.div>
           ))}
+        </motion.div>
+      </section>
+
+      {/* Download / PWA Section */}
+      <section className="max-w-4xl mx-auto px-6 pb-24 text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="glass rounded-3xl p-10 md:p-16 border border-white/20 relative overflow-hidden"
+        >
+          {/* Background glow effects */}
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl" />
+
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 relative z-10">
+            Take TaskFlow everywhere.
+          </h2>
+          <p className="text-white/60 text-lg mb-10 max-w-xl mx-auto relative z-10">
+            Install our Progressive Web App for a native experience on Desktop, iOS, and Android. No App Store required.
+          </p>
+          
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 relative z-10">
+            <Link to="/signup">
+              <Button 
+                size="lg" 
+                className="w-full md:w-auto px-10 bg-white text-indigo-900 hover:bg-white/90 shadow-xl shadow-white/10"
+              >
+                <Download size={20} /> Get App Now
+              </Button>
+            </Link>
+            
+            <div className="flex gap-8 text-white/40">
+              <div className="flex flex-col items-center gap-1.5">
+                <Laptop size={24} />
+                <span className="text-[10px] font-bold uppercase tracking-widest">Desktop</span>
+              </div>
+              <div className="flex flex-col items-center gap-1.5">
+                <Smartphone size={24} />
+                <span className="text-[10px] font-bold uppercase tracking-widest">Mobile</span>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </section>
 
